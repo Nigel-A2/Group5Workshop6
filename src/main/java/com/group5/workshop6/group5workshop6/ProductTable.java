@@ -50,7 +50,9 @@ public class ProductTable {
 
     @FXML
     void onAddProductClicked(MouseEvent event) {
-
+        //load the dialog in "add" mode. No product is needed.
+        mode = "add";
+        openDialog(null, mode);
     }
 
     @FXML
