@@ -118,7 +118,7 @@ public class ProductManager {
     }
 
     /**
-     * Deletes a product from the database
+     * Deletes a product from the database.
      * There should be a popup dialog for confirmation
      * @param product The product to delete
      */

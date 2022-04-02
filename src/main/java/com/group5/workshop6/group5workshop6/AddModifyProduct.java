@@ -44,10 +44,12 @@ public class AddModifyProduct {
 
     private String mode;
 
+    Product product = new Product(Integer.parseInt(tvProductId.getText()), tvProdName.getText());
+
     @FXML
     void onSaveProductClicked(MouseEvent event) {
         // the button handlers need to be rewritten
-        //
+
         //
         //String user = "";
         // String password = "";
@@ -77,10 +79,10 @@ public class AddModifyProduct {
         //     String sql = null;
              //if mode is "edit", do an update, else, do an insert
             if (mode.equals("edit")){
-                ProductManager.updateProduct();
+                ProductManager.updateProduct(product);
             }
              else{
-                ProductManager.createProduct();
+                ProductManager.createProduct(product);
              }
         //     PreparedStatement stmt = conn.prepareStatement(sql);
         //     stmt.setString(1, tvProdName.getText());
@@ -104,7 +106,7 @@ public class AddModifyProduct {
 
     @FXML
     void onDeleteProductClicked(MouseEvent event) {
-        ProductManager.deleteProduct();
+        ProductManager.deleteProduct(product);
 
 //        String user = "";
 //        String password = "";
@@ -158,7 +160,7 @@ public class AddModifyProduct {
         //display the mode on the dialog
         lblMode.setText(mode);
 
-        //if this is add mode, hide the delete button, as there is nothing to delete
+        //if this is in add mode, hide the delete button, as there is nothing to delete
         if (mode.equals("add"))
         {
             btnDeleteProduct.setVisible(false);

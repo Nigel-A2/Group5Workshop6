@@ -1,10 +1,8 @@
 package com.group5.workshop6.group5workshop6;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.*;
-import java.util.Properties;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
@@ -114,34 +112,40 @@ public class ProductTable {
     private void getProducts() {
         //clear the observable list prior to adding the data
         productData.clear();
-        // load products from database
-        String user = "";
-        String password = "";
-        String url = "";
-        // that connection.properties file needs to be replaced with the one we have in the project
-        try {
-            FileInputStream fis = new FileInputStream("c:\\connection.properties");
-            Properties p = new Properties();
-            p.load(fis);
-            url = (String) p.get("url");
-            user = (String) p.get("user");
-            password = (String) p.get("password");
-        } catch (IOException e) {
-            e.printStackTrace();
+        List<Integer> id = ProductManager.getProductIdList();
+        while () // what do I put here?
+        {
+            ProductManager.getProductById(); // how do I get an int value out of the integer list?
         }
 
-        try{
-            Connection conn = DriverManager.getConnection(url, user, password);
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from products");
-            while (rs.next())
-            {
-                productData.add(new Product(rs.getInt(1), rs.getString(2)));
-            }
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        // load products from database
+//        String user = "";
+//        String password = "";
+//        String url = "";
+//        // that connection.properties file needs to be replaced with the one we have in the project
+//        try {
+//            FileInputStream fis = new FileInputStream("c:\\connection.properties");
+//            Properties p = new Properties();
+//            p.load(fis);
+//            url = (String) p.get("url");
+//            user = (String) p.get("user");
+//            password = (String) p.get("password");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+//        try{
+//            Connection conn = DriverManager.getConnection(url, user, password);
+//            Statement stmt = conn.createStatement();
+//            ResultSet rs = stmt.executeQuery("select * from products");
+//            while (rs.next())
+//            {
+//                productData.add(new Product(rs.getInt(1), rs.getString(2)));
+//            }
+//            conn.close();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
     }
 
 }
