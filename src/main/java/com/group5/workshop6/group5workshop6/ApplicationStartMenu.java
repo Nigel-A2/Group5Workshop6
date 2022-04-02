@@ -12,7 +12,7 @@ public class ApplicationStartMenu extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ApplicationStartMenu.class.getResource("start-menu-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("Welcome!");
         stage.setScene(scene);
         stage.show();
     }
