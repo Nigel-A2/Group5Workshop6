@@ -113,9 +113,9 @@ public class ProductTable {
         //clear the observable list prior to adding the data
         productData.clear();
         List<Integer> id = ProductManager.getProductIdList();
-        while () // what do I put here?
+        for (int i=1; i < id.size(); i++)
         {
-            ProductManager.getProductById(); // how do I get an int value out of the integer list?
+            ProductManager.getProductById(i);
         }
 
         // load products from database
