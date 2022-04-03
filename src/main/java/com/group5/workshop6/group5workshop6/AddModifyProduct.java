@@ -32,6 +32,9 @@ public class AddModifyProduct {
     private Button btnSaveProduct;
 
     @FXML
+    private Button btnCancel;
+
+    @FXML
     private Label lblMode;
 
     // accidentally used "tv" because I was thinking about Android's TextView
@@ -44,13 +47,19 @@ public class AddModifyProduct {
     private String mode;
 
     @FXML
+    void onCancelClicked(MouseEvent event) {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
     void onSaveProductClicked(MouseEvent event) {
-        // that connection.properties file needs to be replaced with the one we have in the project
         String user = "";
         String password = "";
         String url = "";
         try {
-            FileInputStream fis = new FileInputStream("c:\\connection.properties");
+            FileInputStream fis = new FileInputStream("src/main/resources/connection.properties");
             Properties p = new Properties();
             p.load(fis);
             url = (String) p.get("url");
@@ -91,12 +100,11 @@ public class AddModifyProduct {
 
     @FXML
     void onDeleteProductClicked(MouseEvent event) {
-        // that connection.properties file needs to be replaced with the one we have in the project
         String user = "";
         String password = "";
         String url = "";
         try {
-            FileInputStream fis = new FileInputStream("c:\\connection.properties");
+            FileInputStream fis = new FileInputStream("src/main/resources/connection.properties");
             Properties p = new Properties();
             p.load(fis);
             url = (String) p.get("url");
@@ -132,6 +140,7 @@ public class AddModifyProduct {
         assert lblMode != null : "fx:id=\"lblMode\" was not injected: check your FXML file 'add-modify-product-view.fxml'.";
         assert tvProdName != null : "fx:id=\"tvProdName\" was not injected: check your FXML file 'add-modify-product-view.fxml'.";
         assert tvProductId != null : "fx:id=\"tvProductId\" was not injected: check your FXML file 'add-modify-product-view.fxml'.";
+        assert btnCancel != null : "fx:id=\"btnCancel\" was not injected: check your FXML file 'add-modify-product-view.fxml'.";
     }
 
     public void processProduct(Product p) {
@@ -144,7 +153,7 @@ public class AddModifyProduct {
         //display the mode on the dialog
         lblMode.setText(mode);
 
-        //if this is add mode, hide the delete button, as there is nothing to delete
+        //if this is in add mode, hide the delete button, as there is nothing to delete
         if (mode.equals("add"))
         {
             btnDeleteProduct.setVisible(false);

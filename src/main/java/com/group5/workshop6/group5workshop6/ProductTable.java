@@ -14,6 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -36,6 +37,9 @@ public class ProductTable {
     private Button btnAddProduct;
 
     @FXML
+    private Button btnHome;
+
+    @FXML
     private TableView<Product> tvProducts;
 
     @FXML
@@ -47,6 +51,13 @@ public class ProductTable {
     private ObservableList<Product> productData = FXCollections.observableArrayList();
 
     private String mode = "edit";
+
+    @FXML
+    void onHomeClicked(MouseEvent event) {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
+    }
 
     @FXML
     void onAddProductClicked(MouseEvent event) {
@@ -61,6 +72,7 @@ public class ProductTable {
         assert tvProducts != null : "fx:id=\"tvProducts\" was not injected: check your FXML file 'product-table-view.fxml'.";
         assert colProdName != null : "fx:id=\"colProdName\" was not injected: check your FXML file 'product-table-view.fxml'.";
         assert colProductId != null : "fx:id=\"colProductId\" was not injected: check your FXML file 'product-table-view.fxml'.";
+        assert btnHome != null : "fx:id=\"btnHome\" was not injected: check your FXML file 'product-table-view.fxml'.";
 
         // get the database data into the table view
         colProductId.setCellValueFactory(new PropertyValueFactory<Product, Integer>("productId"));
@@ -118,9 +130,8 @@ public class ProductTable {
         String user = "";
         String password = "";
         String url = "";
-        // that connection.properties file needs to be replaced with the one we have in the project
         try {
-            FileInputStream fis = new FileInputStream("c:\\connection.properties");
+            FileInputStream fis = new FileInputStream("src/main/resources/connection.properties");
             Properties p = new Properties();
             p.load(fis);
             url = (String) p.get("url");

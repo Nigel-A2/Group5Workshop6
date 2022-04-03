@@ -32,5 +32,6 @@
             <Font size="24.0" />
          </font>
       </Label>
+      <Button fx:id="btnCancel" layoutX="253.0" layoutY="288.0" mnemonicParsing="false" onMouseClicked="#onCancelClicked" prefHeight="53.0" prefWidth="95.0" text="Cancel" />
    </children>
 </AnchorPane>

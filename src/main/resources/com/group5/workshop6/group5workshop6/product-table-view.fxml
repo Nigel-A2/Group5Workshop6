@@ -24,6 +24,7 @@
         </content>
       </ScrollPane>
       <Label layoutX="214.0" layoutY="14.0" text="Select a Product to edit or delete" />
-      <Button fx:id="btnAddProduct" layoutX="242.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#onAddProductClicked" text="Add a new product" />
+      <Button fx:id="btnAddProduct" layoutX="83.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#onAddProductClicked" text="Add a new product" />
+      <Button fx:id="btnHome" layoutX="418.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#onHomeClicked" text="Home" />
    </children>
 </AnchorPane>
