@@ -29,6 +29,7 @@ public class ProductManager {
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("IT'S RAW!!");
         }
         return productList;
     }
@@ -60,6 +61,7 @@ public class ProductManager {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("IT'S RAW!!");
         }
 
         return product;
@@ -78,8 +80,9 @@ public class ProductManager {
 
             String query = "UPDATE products SET ProdName=? WHERE ProductId=?";
             PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setString(1, product.getProdName());
-            // I think this is where parameter 2 needs to be specified
+            stmt.setInt(1, product.getProductId());
+            stmt.setString(2, product.getProdName());
+            // rows updated: 0 // tried reversing the order of the parameters, but I get the same result
             int result = stmt.executeUpdate();
             System.out.println("Rows updated: " + result);
             conn.close();
@@ -87,6 +90,7 @@ public class ProductManager {
                 return false;
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("IT'S RAW!!");
             return false;
         }
         return true;
@@ -113,6 +117,7 @@ public class ProductManager {
                 return false;
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("IT'S RAW!!");
             return false;
         }
         return true;
@@ -132,8 +137,8 @@ public class ProductManager {
 
             String query = "DELETE FROM `products` WHERE ProductId=?";
             PreparedStatement stmt = conn.prepareStatement(query);
-            // no value specified for parameter 1, line below made delete button do nothing
-            //stmt.setString(1, product.getProdName());
+            // delete works now
+            stmt.setInt(1, product.getProductId());
             int result = stmt.executeUpdate();
             System.out.println("Rows updated: " + result);
             conn.close();
@@ -141,6 +146,7 @@ public class ProductManager {
                 return false;
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("IT'S RAW!!");
             return false;
         }
         return true;
