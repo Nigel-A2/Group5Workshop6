@@ -48,7 +48,7 @@ public class AddModifyProduct {
 
     @FXML
     void onSaveProductClicked(MouseEvent event) {
-        product = new Product(0, tvProdName.getText()); // the ProductId textbox is empty!
+        product.setProdName(tvProdName.getText());
         // the button handlers need to be rewritten
 
         //
@@ -153,6 +153,7 @@ public class AddModifyProduct {
     }
 
     public void processProduct(Product p) {
+        product = p;
         tvProductId.setText(p.getProductId() + "");
         tvProdName.setText(p.getProdName());
     }

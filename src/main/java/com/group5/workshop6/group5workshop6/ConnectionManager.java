@@ -10,12 +10,12 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 
-class ConnectionManager {
+public class ConnectionManager {
     /**
      * Opens a connection to the database
      * @return The database connection, or null if the connection could not be established
      * */
-    static Connection getConnection() {
+    public static Connection getConnection() {
         ConnectionInfo connInfo = getConnectionInfo("connection.properties");
 
         if (connInfo == null)
