@@ -80,8 +80,8 @@ public class ProductManager {
 
             String query = "UPDATE products SET ProdName=? WHERE ProductId=?";
             PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setInt(1, product.getProductId());
-            stmt.setString(2, product.getProdName());
+            stmt.setString(1, product.getProdName());
+            stmt.setInt(2, product.getProductId());
             // rows updated: 0 // tried reversing the order of the parameters, but I get the same result
             int result = stmt.executeUpdate();
             System.out.println("Rows updated: " + result);
