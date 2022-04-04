@@ -79,6 +79,7 @@ public class ProductManager {
             String query = "UPDATE products SET ProdName=? WHERE ProductId=?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, product.getProdName());
+            // I think this is where parameter 2 needs to be specified
             int result = stmt.executeUpdate();
             System.out.println("Rows updated: " + result);
             conn.close();
@@ -131,7 +132,8 @@ public class ProductManager {
 
             String query = "DELETE FROM `products` WHERE ProductId=?";
             PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setString(1, product.getProdName());
+            // no value specified for parameter 1, line below made delete button do nothing
+            //stmt.setString(1, product.getProdName());
             int result = stmt.executeUpdate();
             System.out.println("Rows updated: " + result);
             conn.close();

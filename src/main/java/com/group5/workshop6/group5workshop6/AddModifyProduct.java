@@ -44,10 +44,11 @@ public class AddModifyProduct {
 
     private String mode;
 
-    Product product = new Product(Integer.parseInt(tvProductId.getText()), tvProdName.getText());
+    Product product;
 
     @FXML
     void onSaveProductClicked(MouseEvent event) {
+        product = new Product(0, tvProdName.getText()); // the ProductId textbox is empty!
         // the button handlers need to be rewritten
 
         //
@@ -106,6 +107,7 @@ public class AddModifyProduct {
 
     @FXML
     void onDeleteProductClicked(MouseEvent event) {
+        product = new Product(Integer.parseInt(tvProductId.getText()), tvProdName.getText());
         ProductManager.deleteProduct(product);
 
 //        String user = "";
@@ -133,9 +135,9 @@ public class AddModifyProduct {
 //            }
 //            conn.close();
             //get reference to stage and close it
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            stage.close();
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //        }
