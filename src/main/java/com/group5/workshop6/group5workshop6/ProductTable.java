@@ -42,7 +42,7 @@ public class ProductTable {
     @FXML
     private TableColumn<Product, Integer> colProductId;
 
-    private ObservableList<Product> productData = FXCollections.observableArrayList();
+//    private ObservableList<Product> productData = FXCollections.observableArrayList();
 
     private String mode = "edit";
 
@@ -63,7 +63,6 @@ public class ProductTable {
         // get the database data into the table view
         colProductId.setCellValueFactory(new PropertyValueFactory<Product, Integer>("productId"));
         colProdName.setCellValueFactory(new PropertyValueFactory<Product, String>("prodName"));
-        tvProducts.setItems(productData);
 
         getProducts();
 
@@ -111,12 +110,12 @@ public class ProductTable {
 
     private void getProducts() {
         //clear the observable list prior to adding the data
-        productData.clear();
-        List<Integer> id = ProductManager.getProductIdList();
-        for (int i=1; i < id.size(); i++)
-        {
-            ProductManager.getProductById(i);
-        }
+        tvProducts.setItems(FXCollections.observableArrayList(ProductManager.getProductList()));
+//        List<Integer> id = ProductManager.getProductIdList();
+//        for (int i=1; i < id.size(); i++)
+//        {
+//            ProductManager.getProductById(i);
+//        }
 
         // load products from database
 //        String user = "";

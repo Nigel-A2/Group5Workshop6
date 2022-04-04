@@ -9,28 +9,28 @@ public class ProductManager {
      * Get a list of the integer ids of all the products
      * @return A list of product ids, or an empty list if anything goes wrong
      * */
-    static List<Integer> getProductIdList() {
+    public static List<Product> getProductList() {
         Connection conn = ConnectionManager.getConnection();
-        List<Integer> productIdList = new ArrayList<>();
+        List<Product> productList = new ArrayList<>();
 
         if (conn == null) {
             System.err.println("No connection available.");
-            return productIdList;
+            return productList;
         }
 
         try {
             Statement stmt = conn.createStatement();
-            String query = "SELECT ProductId FROM products ORDER BY ProductId";
+            String query = "SELECT * FROM products ORDER BY ProductId";
             ResultSet results = stmt.executeQuery(query);
 
             while (results.next()) {
-                productIdList.add(results.getInt(1));
+                productList.add(new Product(results.getInt(1), results.getString(2)));
             }
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return productIdList;
+        return productList;
     }
 
     /**
