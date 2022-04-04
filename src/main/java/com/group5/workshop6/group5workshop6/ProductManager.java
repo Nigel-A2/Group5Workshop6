@@ -6,8 +6,8 @@ import java.sql.*;
 
 public class ProductManager {
     /**
-     * Get a list of the integer ids of all the products
-     * @return A list of product ids, or an empty list if anything goes wrong
+     * Get a list of all the products
+     * @return A list of Products, or an empty list if anything goes wrong
      * */
     public static List<Product> getProductList() {
         Connection conn = ConnectionManager.getConnection();
