@@ -1,4 +1,4 @@
-package ca.natepenner.assignment2day6;
+package com.group5.workshop6.group5workshop6.data;
 
 /**
  * Class representing the data for a travel agent

@@ -1,4 +1,6 @@
-package ca.natepenner.assignment2day6;
+package com.group5.workshop6.group5workshop6.data;
+
+import com.group5.workshop6.group5workshop6.ConnectionManager;
 
 import java.sql.*;
 import java.util.ArrayList;
