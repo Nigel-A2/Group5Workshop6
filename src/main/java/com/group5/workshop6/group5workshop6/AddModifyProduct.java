@@ -1,6 +1,7 @@
 package com.group5.workshop6.group5workshop6;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -43,86 +44,103 @@ public class AddModifyProduct {
 
     private String mode;
 
+    Product product;
+
     @FXML
     void onSaveProductClicked(MouseEvent event) {
-        // that connection.properties file needs to be replaced with the one we have in the project
-        String user = "";
-        String password = "";
-        String url = "";
-        try {
-            FileInputStream fis = new FileInputStream("c:\\connection.properties");
-            Properties p = new Properties();
-            p.load(fis);
-            url = (String) p.get("url");
-            user = (String) p.get("user");
-            password = (String) p.get("password");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try{
-            Connection conn = DriverManager.getConnection(url, user, password);
-            String sql = null;
-            //if mode is "edit", do an update, else, do an insert
+        product = new Product(0, tvProdName.getText()); // the ProductId textbox is empty!
+        // the button handlers need to be rewritten
+
+        //
+        //String user = "";
+        // String password = "";
+        // String url = "";
+        // String dbProtocol = "";
+        // String db = "";
+        // String port = "";
+        // String host = "";
+        //
+        // FileInputStream fis = null;
+        // try {
+        //     fis = new FileInputStream("c:\\connection.properties");
+        //     //ConnectionManager conMan  = (ConnectionManager) ConnectionManager.getConnection();
+        //     Properties p = new Properties();
+        //     p.load(fis);
+        //     url = (String) p.get("url");
+        //     user = (String) p.get("user");
+        //     password = (String) p.get("password");
+        // } catch (IOException e) {
+        //     e.printStackTrace();
+        // }
+        //
+        //
+        // try{
+        //
+        //     Connection conn = DriverManager.getConnection(url, user, password);
+        //     String sql = null;
+             //if mode is "edit", do an update, else, do an insert
             if (mode.equals("edit")){
-                sql = "UPDATE `products` SET `ProdName`=? WHERE ProductId=?";
+                ProductManager.updateProduct(product);
             }
-            else{
-                sql = "INSERT INTO `products`(`ProductId`,`ProdName`) VALUES (null,?)";
-            }
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, tvProdName.getText());
-            if (mode == "edit") {
-                stmt.setInt(2, Integer.parseInt(tvProductId.getText()));
-            }
-            int numRows = stmt.executeUpdate();
-            if (numRows == 0)
-            {
-                System.out.println("update failed");
-            }
-            conn.close();
-            //get reference to stage and close it
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            stage.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+             else{
+                ProductManager.createProduct(product);
+             }
+        //     PreparedStatement stmt = conn.prepareStatement(sql);
+        //     stmt.setString(1, tvProdName.getText());
+        //     if (mode == "edit") {
+        //         stmt.setInt(2, Integer.parseInt(tvProductId.getText()));
+        //     }
+        //     int numRows = stmt.executeUpdate();
+        //     if (numRows == 0)
+        //     {
+        //         System.out.println("update failed");
+        //     }
+        //    conn.close();
+        //     //get reference to stage and close it
+             Node node = (Node) event.getSource();
+             Stage stage = (Stage) node.getScene().getWindow();
+             stage.close();
+        // } catch (SQLException e) {
+        //     e.printStackTrace();
+        // }
     }
 
     @FXML
     void onDeleteProductClicked(MouseEvent event) {
-        // that connection.properties file needs to be replaced with the one we have in the project
-        String user = "";
-        String password = "";
-        String url = "";
-        try {
-            FileInputStream fis = new FileInputStream("c:\\connection.properties");
-            Properties p = new Properties();
-            p.load(fis);
-            url = (String) p.get("url");
-            user = (String) p.get("user");
-            password = (String) p.get("password");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try{
-            Connection conn = DriverManager.getConnection(url, user, password);
-            String sql = "DELETE FROM `products` WHERE ProductId=?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, Integer.parseInt(tvProductId.getText()));
-            int numRows = stmt.executeUpdate();
-            if (numRows == 0)
-            {
-                System.out.println("update failed");
-            }
-            conn.close();
+        product = new Product(Integer.parseInt(tvProductId.getText()), tvProdName.getText());
+        ProductManager.deleteProduct(product);
+
+//        String user = "";
+//        String password = "";
+//        String url = "";
+//        try {
+//            FileInputStream fis = new FileInputStream("c:\\connection.properties");
+//            Properties p = new Properties();
+//            p.load(fis);
+//            url = (String) p.get("url");
+//            user = (String) p.get("user");
+//            password = (String) p.get("password");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        try{
+//            Connection conn = DriverManager.getConnection(url, user, password);
+//            String sql = "DELETE FROM `products` WHERE ProductId=?";
+//            PreparedStatement stmt = conn.prepareStatement(sql);
+//            stmt.setInt(1, Integer.parseInt(tvProductId.getText()));
+//            int numRows = stmt.executeUpdate();
+//            if (numRows == 0)
+//            {
+//                System.out.println("update failed");
+//            }
+//            conn.close();
             //get reference to stage and close it
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            stage.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @FXML
@@ -144,7 +162,7 @@ public class AddModifyProduct {
         //display the mode on the dialog
         lblMode.setText(mode);
 
-        //if this is add mode, hide the delete button, as there is nothing to delete
+        //if this is in add mode, hide the delete button, as there is nothing to delete
         if (mode.equals("add"))
         {
             btnDeleteProduct.setVisible(false);
