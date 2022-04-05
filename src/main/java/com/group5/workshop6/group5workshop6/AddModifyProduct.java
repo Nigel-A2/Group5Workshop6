@@ -49,7 +49,8 @@ public class AddModifyProduct {
     @FXML
     void onSaveProductClicked(MouseEvent event) {
         try {
-            product.setProdName(tvProdName.getText());
+
+
             // NullPointerException on add, this.product is null apparently
 
             //
@@ -81,8 +82,10 @@ public class AddModifyProduct {
             //     String sql = null;
             //if mode is "edit", do an update, else, do an insert
             if (mode.equals("edit")) {
+                product.setProdName(tvProdName.getText());
                 ProductManager.updateProduct(product);
             } else {
+                product = new Product(0, tvProdName.getText());
                 ProductManager.createProduct(product);
             }
             //     PreparedStatement stmt = conn.prepareStatement(sql);
