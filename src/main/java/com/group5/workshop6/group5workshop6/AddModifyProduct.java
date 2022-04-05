@@ -48,58 +48,63 @@ public class AddModifyProduct {
 
     @FXML
     void onSaveProductClicked(MouseEvent event) {
-        product.setProdName(tvProdName.getText());
-        // the button handlers need to be rewritten
+        try {
+            product.setProdName(tvProdName.getText());
+            // NullPointerException on add, this.product is null apparently
 
-        //
-        //String user = "";
-        // String password = "";
-        // String url = "";
-        // String dbProtocol = "";
-        // String db = "";
-        // String port = "";
-        // String host = "";
-        //
-        // FileInputStream fis = null;
-        // try {
-        //     fis = new FileInputStream("c:\\connection.properties");
-        //     //ConnectionManager conMan  = (ConnectionManager) ConnectionManager.getConnection();
-        //     Properties p = new Properties();
-        //     p.load(fis);
-        //     url = (String) p.get("url");
-        //     user = (String) p.get("user");
-        //     password = (String) p.get("password");
-        // } catch (IOException e) {
-        //     e.printStackTrace();
-        // }
-        //
-        //
-        // try{
-        //
-        //     Connection conn = DriverManager.getConnection(url, user, password);
-        //     String sql = null;
-             //if mode is "edit", do an update, else, do an insert
-            if (mode.equals("edit")){
+            //
+            //String user = "";
+            // String password = "";
+            // String url = "";
+            // String dbProtocol = "";
+            // String db = "";
+            // String port = "";
+            // String host = "";
+            //
+            // FileInputStream fis = null;
+            // try {
+            //     fis = new FileInputStream("c:\\connection.properties");
+            //     //ConnectionManager conMan  = (ConnectionManager) ConnectionManager.getConnection();
+            //     Properties p = new Properties();
+            //     p.load(fis);
+            //     url = (String) p.get("url");
+            //     user = (String) p.get("user");
+            //     password = (String) p.get("password");
+            // } catch (IOException e) {
+            //     e.printStackTrace();
+            // }
+            //
+            //
+            // try{
+            //
+            //     Connection conn = DriverManager.getConnection(url, user, password);
+            //     String sql = null;
+            //if mode is "edit", do an update, else, do an insert
+            if (mode.equals("edit")) {
                 ProductManager.updateProduct(product);
-            }
-             else{
+            } else {
                 ProductManager.createProduct(product);
-             }
-        //     PreparedStatement stmt = conn.prepareStatement(sql);
-        //     stmt.setString(1, tvProdName.getText());
-        //     if (mode == "edit") {
-        //         stmt.setInt(2, Integer.parseInt(tvProductId.getText()));
-        //     }
-        //     int numRows = stmt.executeUpdate();
-        //     if (numRows == 0)
-        //     {
-        //         System.out.println("update failed");
-        //     }
-        //    conn.close();
-        //     //get reference to stage and close it
-             Node node = (Node) event.getSource();
-             Stage stage = (Stage) node.getScene().getWindow();
-             stage.close();
+            }
+            //     PreparedStatement stmt = conn.prepareStatement(sql);
+            //     stmt.setString(1, tvProdName.getText());
+            //     if (mode == "edit") {
+            //         stmt.setInt(2, Integer.parseInt(tvProductId.getText()));
+            //     }
+            //     int numRows = stmt.executeUpdate();
+            //     if (numRows == 0)
+            //     {
+            //         System.out.println("update failed");
+            //     }
+            //    conn.close();
+            //     //get reference to stage and close it
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            stage.close();
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+            System.out.println("COME HERE YOU!");
+        }
         // } catch (SQLException e) {
         //     e.printStackTrace();
         // }
