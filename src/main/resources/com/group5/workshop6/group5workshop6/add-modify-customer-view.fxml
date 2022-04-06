@@ -6,8 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-
 <AnchorPane prefHeight="528.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.workshop6.group5workshop6.AddModifyCustomer">
     <children>
         <TextField fx:id="tfCustomerId" editable="false" layoutX="125.0" layoutY="39.0" />
@@ -25,7 +23,7 @@
         <Button fx:id="btnCancel" layoutX="303.0" layoutY="456.0" mnemonicParsing="false" onMouseClicked="#onCancelClicked" text="Cancel" />
         <Button fx:id="btnDelete" layoutX="483.0" layoutY="456.0" mnemonicParsing="false" onMouseClicked="#onDeleteClicked" text="Delete" />
         <TextField fx:id="tfAgentId" layoutX="434.0" layoutY="312.0" />
-        <Label layoutX="31.0" layoutY="43.0" text="AgentId:" />
+        <Label layoutX="31.0" layoutY="43.0" text="CustomerId:" />
         <Label layoutX="31.0" layoutY="96.0" text="CustFirstName:" />
         <Label layoutX="31.0" layoutY="153.0" text="CustLastName:" />
         <Label layoutX="31.0" layoutY="204.0" text="CustAddress:" />

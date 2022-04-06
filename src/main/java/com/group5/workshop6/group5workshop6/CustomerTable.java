@@ -152,7 +152,7 @@ public class CustomerTable {
             e.printStackTrace();
         }
 
-        AddModifyProduct dialogController = fxmlLoader.<AddModifyCustomer>getController();
+        AddModifyCustomer dialogController = fxmlLoader.<AddModifyCustomer>getController();
         dialogController.passModeToDialog(mode);
         if (mode.equals("edit")) {
             //if a customer's information is being edited, pass their data to the dialog
