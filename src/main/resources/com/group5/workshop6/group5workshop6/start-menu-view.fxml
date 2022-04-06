@@ -1,22 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.workshop6.group5workshop6.StartMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.workshop6.group5workshop6.StartMenuController">
    <children>
-      <Button fx:id="btnCustomers" layoutX="85.0" layoutY="236.0" mnemonicParsing="false" onMouseClicked="#onCustomersClicked" text="Customers" />
-      <Button fx:id="btnBookings" layoutX="212.0" layoutY="236.0" mnemonicParsing="false" onMouseClicked="#onBookingsClicked" text="Bookings" />
-      <Button fx:id="btnPackages" layoutX="341.0" layoutY="236.0" mnemonicParsing="false" onMouseClicked="#onPackagesClicked" text="Packages" />
-      <Button fx:id="btnProducts" layoutX="461.0" layoutY="236.0" mnemonicParsing="false" onMouseClicked="#onProductsClicked" text="Products" />
-      <Label layoutX="121.0" layoutY="87.0" text="Travel Experts Database">
+      <VBox layoutY="90.0" prefHeight="510.0" prefWidth="158.0" style="-fx-background-color: #252528;">
+         <children>
+            <Button fx:id="btnCustomers" mnemonicParsing="false" onMouseClicked="#onCustomersClicked" prefHeight="50.0" prefWidth="151.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Customers" textFill="#ffc014">
+               <font>
+                  <Font name="Consolas Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnBookings" mnemonicParsing="false" onMouseClicked="#onBookingsClicked" prefHeight="50.0" prefWidth="151.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Bookings" textFill="#ffc014">
+               <font>
+                  <Font name="Consolas Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnPackages" mnemonicParsing="false" onMouseClicked="#onPackagesClicked" prefHeight="50.0" prefWidth="151.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Packages" textFill="#ffc014">
+               <font>
+                  <Font name="Consolas Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnProducts" mnemonicParsing="false" onMouseClicked="#onProductsClicked" prefHeight="44.0" prefWidth="151.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Products" textFill="#ffc014">
+               <font>
+                  <Font name="Consolas Bold" size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="90.0" prefWidth="800.0" style="-fx-background-color: #252528;" text="Travel Experts Database " textFill="#ffc014">
          <font>
-            <Font size="36.0" />
+            <Font name="Consolas Bold" size="38.0" />
          </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </Label>
-      <Label layoutX="248.0" layoutY="332.0" text="2022, Travel Experts" />
+      <ImageView fitHeight="90.0" fitWidth="108.0" layoutX="34.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../TElogo.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="158.0" layoutY="90.0" prefHeight="510.0" prefWidth="642.0" style="-fx-background-color: #2e2c29;">
+         <children>
+            <Label layoutX="14.0" layoutY="476.0" text="2022, Travel Experts" textFill="#ffc014">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
