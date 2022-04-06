@@ -17,6 +17,7 @@ public class Customer {
     private int AgentId;
 
     public Customer(int customerId, String custFirstName, String custLastName, String custAddress, String custCity, String custProv, String custPostal, String custCountry, String custHomePhone, String custBusPhone, String custEmail, int agentId) {
+        // there are 12 columns
         CustomerId = customerId;
         CustFirstName = custFirstName;
         CustLastName = custLastName;
