@@ -102,10 +102,30 @@ public class AddModifyCustomer {
         try {
             //if mode is "edit", do an update, else, do an insert
             if (mode.equals("edit")) {
-                customer.setProdName(tvProdName.getText());
+                customer.setCustFirstName(tfCustFirstName.getText());
+                customer.setCustLastName(tfCustLastName.getText());
+                customer.setCustAddress(tfCustAddress.getText());
+                customer.setCustCity(tfCustCity.getText());
+                customer.setCustProv(tfCustProv.getText());
+                customer.setCustPostal(tfCustPostal.getText());
+                customer.setCustCountry(tfCustCountry.getText());
+                customer.setCustHomePhone(tfCustHomePhone.getText());
+                customer.setCustBusPhone(tfCustBusPhone.getText());
+                customer.setCustEmail(tfCustEmail.getText());
+                customer.setAgentId(Integer.parseInt(tfAgentId.getText()));
                 CustomerManager.updateCustomer(customer);
             } else {
-                customer = new Customer(0, tvProdName.getText());
+                customer = new Customer(0, tfCustFirstName.getText(),
+                        tfCustLastName.getText(),
+                        tfCustAddress.getText(),
+                        tfCustCity.getText(),
+                        tfCustProv.getText(),
+                        tfCustPostal.getText(),
+                        tfCustCountry.getText(),
+                        tfCustHomePhone.getText(),
+                        tfCustBusPhone.getText(),
+                        tfCustEmail.getText(),
+                        Integer.parseInt(tfAgentId.getText()));
                 CustomerManager.createCustomer(customer);
             }
             //get reference to stage and close it
