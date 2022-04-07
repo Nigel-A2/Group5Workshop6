@@ -136,7 +136,17 @@ public class CustomerManager {
             if (conn == null)
                 return false;
 
-            String query = "INSERT INTO customers(CustomerId,CustFirstName,CustLastName,CustAddress,CustCity,CustProv,CustPostal,CustCountry,CustHomePhone,CustBusPhone,CustEmail,AgentId) VALUES (null,?,?,?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO `customers`(`CustomerId`,`CustFirstName`," +
+                    "`CustLastName`," +
+                    "`CustAddress`," +
+                    "`CustCity`," +
+                    "`CustProv`," +
+                    "`CustPostal`," +
+                    "`CustCountry`," +
+                    "`CustHomePhone`," +
+                    "`CustBusPhone`," +
+                    "`CustEmail`," +
+                    "`AgentId`) VALUES (null,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, customer.getCustFirstName());
             stmt.setString(2, customer.getCustLastName());
@@ -174,7 +184,7 @@ public class CustomerManager {
             if (conn == null)
                 return false;
 
-            String query = "DELETE FROM customers WHERE CustomerId=?";
+            String query = "DELETE FROM `customers` WHERE CustomerId=?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setInt(1, customer.getCustomerId());
             int result = stmt.executeUpdate();

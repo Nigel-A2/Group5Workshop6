@@ -17,9 +17,6 @@ public class AddModifyCustomer {
     private URL location;
 
     @FXML
-    private Button btnCancel;
-
-    @FXML
     private Button btnDelete;
 
     @FXML
@@ -67,14 +64,6 @@ public class AddModifyCustomer {
     Customer customer;
 
     private String mode;
-
-    @FXML
-    void onCancelClicked(MouseEvent event) {
-        //get reference to stage and close it
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
-    }
 
     @FXML
     void onDeleteClicked(MouseEvent event) {
@@ -141,7 +130,6 @@ public class AddModifyCustomer {
 
     @FXML
     void initialize() {
-        assert btnCancel != null : "fx:id=\"btnCancel\" was not injected: check your FXML file 'add-modify-customer-view.fxml'.";
         assert btnDelete != null : "fx:id=\"btnDelete\" was not injected: check your FXML file 'add-modify-customer-view.fxml'.";
         assert btnSave != null : "fx:id=\"btnSave\" was not injected: check your FXML file 'add-modify-customer-view.fxml'.";
         assert lblMode != null : "fx:id=\"lblMode\" was not injected: check your FXML file 'add-modify-customer-view.fxml'.";

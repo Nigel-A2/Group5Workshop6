@@ -30,8 +30,7 @@ public class CustomerTable {
     @FXML
     private Button btnAddCustomer;
 
-    @FXML
-    private Button btnHome;
+
 
     @FXML
     private TableView<Customer> tvCustomers;
@@ -82,17 +81,8 @@ public class CustomerTable {
     }
 
     @FXML
-    void onHomeClicked(MouseEvent event) {
-        //get reference to stage and close it
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
-    }
-
-    @FXML
     void initialize() {
         assert btnAddCustomer != null : "fx:id=\"btnAddCustomer\" was not injected: check your FXML file 'customer-table-view.fxml'.";
-        assert btnHome != null : "fx:id=\"btnHome\" was not injected: check your FXML file 'customer-table-view.fxml'.";
         assert tvCustomers != null : "fx:id=\"tvCustomers\" was not injected: check your FXML file 'customer-table-view.fxml'.";
         assert colAgentId != null : "fx:id=\"colAgentId\" was not injected: check your FXML file 'customer-table-view.fxml'.";
         assert colCustAddress != null : "fx:id=\"colCustAddress\" was not injected: check your FXML file 'customer-table-view.fxml'.";

@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.workshop6.group5workshop6.CustomerTable">
     <children>
         <TableView fx:id="tvCustomers" layoutX="-2.0" layoutY="28.0" prefHeight="325.0" prefWidth="950.0">
@@ -25,8 +24,7 @@
                 <TableColumn fx:id="colAgentId" prefWidth="75.0" text="AgentId" />
             </columns>
         </TableView>
-        <Button fx:id="btnAddCustomer" layoutX="133.0" layoutY="357.0" mnemonicParsing="false" onMouseClicked="#onAddCustomerClicked" text="Add a new customer" />
-        <Button fx:id="btnHome" layoutX="720.0" layoutY="357.0" mnemonicParsing="false" onMouseClicked="#onHomeClicked" text="Home" />
+        <Button fx:id="btnAddCustomer" layoutX="425.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#onAddCustomerClicked" text="Add a new customer" />
         <Label layoutX="374.0" layoutY="6.0" text="Click on a row to edit or delete a customer" />
     </children>
 </AnchorPane>
