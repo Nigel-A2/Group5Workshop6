@@ -22,7 +22,6 @@ public class CustomerManager {
             Statement stmt = conn.createStatement();
             String query = "SELECT * FROM customers ORDER BY CustomerId";
             ResultSet results = stmt.executeQuery(query);
-
             while (results.next()) {
                 customerList.add(new Customer(results.getInt(1),
                         results.getString(2),
@@ -98,20 +97,22 @@ public class CustomerManager {
             if (conn == null)
                 return false;
 
+            System.out.println("Updating customer id " + customer.getCustomerId());
             String query = "UPDATE customers SET CustFirstName=?, CustLastName=?, CustAddress=?, CustCity=?, CustProv=?, CustPostal=?, CustCountry=?, CustHomePhone=?, CustBusPhone=?, CustEmail=?, AgentId=? WHERE CustomerId=?";
+
             PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setInt(1, customer.getCustomerId());
-            stmt.setString(2, customer.getCustFirstName());
-            stmt.setString(3, customer.getCustLastName());
-            stmt.setString(4, customer.getCustAddress());
-            stmt.setString(5, customer.getCustCity());
-            stmt.setString(6, customer.getCustProv());
-            stmt.setString(7, customer.getCustPostal());
-            stmt.setString(8, customer.getCustCountry());
-            stmt.setString(9, customer.getCustHomePhone());
-            stmt.setString(10, customer.getCustBusPhone());
-            stmt.setString(11, customer.getCustEmail());
-            stmt.setInt(12, customer.getAgentId());
+            stmt.setString(1, customer.getCustFirstName());
+            stmt.setString(2, customer.getCustLastName());
+            stmt.setString(3, customer.getCustAddress());
+            stmt.setString(4, customer.getCustCity());
+            stmt.setString(5, customer.getCustProv());
+            stmt.setString(6, customer.getCustPostal());
+            stmt.setString(7, customer.getCustCountry());
+            stmt.setString(8, customer.getCustHomePhone());
+            stmt.setString(9, customer.getCustBusPhone());
+            stmt.setString(10, customer.getCustEmail());
+            stmt.setInt(11, customer.getAgentId());
+            stmt.setInt(12, customer.getCustomerId());
             int result = stmt.executeUpdate();
             System.out.println("Rows updated: " + result);
             conn.close();
