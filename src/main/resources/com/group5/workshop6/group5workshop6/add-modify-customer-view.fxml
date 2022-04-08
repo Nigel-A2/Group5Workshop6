@@ -1,8 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.workshop6.group5workshop6.AddModifyCustomer">
-
+<AnchorPane prefHeight="528.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.workshop6.group5workshop6.AddModifyCustomer">
+    <children>
+        <TextField fx:id="tfCustomerId" editable="false" layoutX="125.0" layoutY="39.0" />
+        <TextField fx:id="tfCustFirstName" layoutX="125.0" layoutY="92.0" />
+        <TextField fx:id="tfCustLastName" layoutX="125.0" layoutY="149.0" />
+        <TextField fx:id="tfCustAddress" layoutX="125.0" layoutY="200.0" />
+        <TextField fx:id="tfCustCity" layoutX="125.0" layoutY="257.0" />
+        <TextField fx:id="tfCustProv" layoutX="125.0" layoutY="312.0" />
+        <TextField fx:id="tfCustPostal" layoutX="434.0" layoutY="39.0" />
+        <TextField fx:id="tfCustCountry" layoutX="434.0" layoutY="93.0" />
+        <TextField fx:id="tfCustHomePhone" layoutX="434.0" layoutY="149.0" />
+        <TextField fx:id="tfCustBusPhone" layoutX="434.0" layoutY="200.0" />
+        <TextField fx:id="tfCustEmail" layoutX="434.0" layoutY="257.0" />
+        <Button fx:id="btnSave" layoutX="134.0" layoutY="456.0" mnemonicParsing="false" onMouseClicked="#onSaveClicked" text="Save" />
+        <Button fx:id="btnDelete" layoutX="483.0" layoutY="456.0" mnemonicParsing="false" onMouseClicked="#onDeleteClicked" text="Delete" />
+        <TextField fx:id="tfAgentId" layoutX="434.0" layoutY="312.0" />
+        <Label layoutX="31.0" layoutY="43.0" text="CustomerId:" />
+        <Label layoutX="31.0" layoutY="96.0" text="CustFirstName:" />
+        <Label layoutX="31.0" layoutY="153.0" text="CustLastName:" />
+        <Label layoutX="31.0" layoutY="204.0" text="CustAddress:" />
+        <Label layoutX="31.0" layoutY="261.0" text="CustCity:" />
+        <Label layoutX="31.0" layoutY="316.0" text="CustProv" />
+        <Label layoutX="206.0" layoutY="382.0" text="Mode:">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <Label fx:id="lblMode" layoutX="303.0" layoutY="382.0" text="                        ">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <Label layoutX="326.0" layoutY="43.0" text="CustPostal:" />
+        <Label layoutX="331.0" layoutY="96.0" text="CustCountry:" />
+        <Label layoutX="325.0" layoutY="153.0" text="CustHomePhone:" />
+        <Label layoutX="326.0" layoutY="204.0" text="CustBusPhone:" />
+        <Label layoutX="326.0" layoutY="261.0" text="CustEmail:" />
+        <Label layoutX="326.0" layoutY="316.0" text="AgentId:" />
+    </children>
 </AnchorPane>
