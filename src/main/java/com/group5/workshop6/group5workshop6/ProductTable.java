@@ -2,14 +2,12 @@ package com.group5.workshop6.group5workshop6;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -41,8 +39,6 @@ public class ProductTable {
 
     @FXML
     private TableColumn<Product, Integer> colProductId;
-
-//    private ObservableList<Product> productData = FXCollections.observableArrayList();
 
     private String mode = "edit";
 
@@ -111,40 +107,6 @@ public class ProductTable {
     private void getProducts() {
         //clear the observable list prior to adding the data
         tvProducts.setItems(FXCollections.observableArrayList(ProductManager.getProductList()));
-//        List<Integer> id = ProductManager.getProductIdList();
-//        for (int i=1; i < id.size(); i++)
-//        {
-//            ProductManager.getProductById(i);
-//        }
-
-        // load products from database
-//        String user = "";
-//        String password = "";
-//        String url = "";
-//        // that connection.properties file needs to be replaced with the one we have in the project
-//        try {
-//            FileInputStream fis = new FileInputStream("c:\\connection.properties");
-//            Properties p = new Properties();
-//            p.load(fis);
-//            url = (String) p.get("url");
-//            user = (String) p.get("user");
-//            password = (String) p.get("password");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-//        try{
-//            Connection conn = DriverManager.getConnection(url, user, password);
-//            Statement stmt = conn.createStatement();
-//            ResultSet rs = stmt.executeQuery("select * from products");
-//            while (rs.next())
-//            {
-//                productData.add(new Product(rs.getInt(1), rs.getString(2)));
-//            }
-//            conn.close();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
     }
 
 }

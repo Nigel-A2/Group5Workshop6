@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 package com.group5.workshop6.group5workshop6.data;
-=======
-package ca.natepenner.assignment2day6;
->>>>>>> nate
 
 /**
  * Class representing the data for a travel agent
