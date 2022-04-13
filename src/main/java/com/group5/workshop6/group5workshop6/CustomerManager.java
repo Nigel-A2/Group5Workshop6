@@ -1,10 +1,14 @@
 package com.group5.workshop6.group5workshop6;
 
+import javafx.scene.control.Alert;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
 
 public class CustomerManager {
+    static Alert errorMessage = new Alert(Alert.AlertType.ERROR);
+    
     /**
      * Get a list of all the customers
      * @return A list of Customers, or an empty list if anything goes wrong
@@ -15,6 +19,8 @@ public class CustomerManager {
 
         if (conn == null) {
             System.err.println("No connection available.");
+            errorMessage.setContentText("No connection available.");
+            errorMessage.show();
             return customerList;
         }
 
@@ -39,6 +45,8 @@ public class CustomerManager {
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
+            errorMessage.setContentText("Could not retrieve customers from the database.");
+            errorMessage.show();
             System.out.println("IT'S RAW!!");
         }
         return customerList;
@@ -55,6 +63,8 @@ public class CustomerManager {
 
         if (conn == null) {
             System.err.println("No connection available.");
+            errorMessage.setContentText("No connection available.");
+            errorMessage.show();
             return customer;
         }
 
@@ -80,6 +90,8 @@ public class CustomerManager {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            errorMessage.setContentText("Could not retrieve customer information from the database");
+            errorMessage.show();
             System.out.println("IT'S RAW!!");
         }
 
@@ -94,9 +106,11 @@ public class CustomerManager {
         try {
             Connection conn = ConnectionManager.getConnection();
 
-            if (conn == null)
+            if (conn == null) {
+                errorMessage.setContentText("No connection available.");
+                errorMessage.show();
                 return false;
-
+            }
             System.out.println("Updating customer id " + customer.getCustomerId());
             String query = "UPDATE customers SET CustFirstName=?, CustLastName=?, CustAddress=?, CustCity=?, CustProv=?, CustPostal=?, CustCountry=?, CustHomePhone=?, CustBusPhone=?, CustEmail=?, AgentId=? WHERE CustomerId=?";
 
@@ -120,6 +134,8 @@ public class CustomerManager {
                 return false;
         } catch (SQLException e) {
             e.printStackTrace();
+            errorMessage.setContentText("Could not update customer data");
+            errorMessage.show();
             System.out.println("IT'S RAW!!");
             return false;
         }
@@ -134,9 +150,11 @@ public class CustomerManager {
         try {
             Connection conn = ConnectionManager.getConnection();
 
-            if (conn == null)
+            if (conn == null) {
+                errorMessage.setContentText("No connection available.");
+                errorMessage.show();
                 return false;
-
+            }
             String query = "INSERT INTO `customers`(`CustomerId`,`CustFirstName`," +
                     "`CustLastName`," +
                     "`CustAddress`," +
@@ -167,6 +185,8 @@ public class CustomerManager {
                 return false;
         } catch (SQLException e) {
             e.printStackTrace();
+            errorMessage.setContentText("Could not create customer");
+            errorMessage.show();
             System.out.println("IT'S RAW!!");
             return false;
         }
@@ -182,9 +202,11 @@ public class CustomerManager {
         try {
             Connection conn = ConnectionManager.getConnection();
 
-            if (conn == null)
+            if (conn == null) {
+                errorMessage.setContentText("No connection available.");
+                errorMessage.show();
                 return false;
-
+            }
             String query = "DELETE FROM `customers` WHERE CustomerId=?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setInt(1, customer.getCustomerId());
@@ -193,11 +215,21 @@ public class CustomerManager {
             conn.close();
             if (result < 1)
                 return false;
-        } catch (SQLException e) {
+        }
+        catch (SQLIntegrityConstraintViolationException e){
             e.printStackTrace();
+            errorMessage.setContentText("This customer has data referenced by other parts of the database, and cannot be deleted");
+            errorMessage.show();
+            return false;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            errorMessage.setContentText("Could not delete customer");
+            errorMessage.show();
             System.out.println("IT'S RAW!!");
             return false;
         }
+
         return true;
     }
 }

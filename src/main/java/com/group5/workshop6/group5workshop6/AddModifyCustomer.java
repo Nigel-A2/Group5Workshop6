@@ -1,11 +1,10 @@
 package com.group5.workshop6.group5workshop6;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -67,23 +66,31 @@ public class AddModifyCustomer {
 
     @FXML
     void onDeleteClicked(MouseEvent event) {
-        customer = new Customer(Integer.parseInt(tfCustomerId.getText()),
-                tfCustFirstName.getText(),
-                tfCustLastName.getText(),
-                tfCustAddress.getText(),
-                tfCustCity.getText(),
-                tfCustProv.getText(),
-                tfCustPostal.getText(),
-                tfCustCountry.getText(),
-                tfCustHomePhone.getText(),
-                tfCustBusPhone.getText(),
-                tfCustEmail.getText(),
-                Integer.parseInt(tfAgentId.getText()));
-        CustomerManager.deleteCustomer(customer);
-        //get reference to stage and close it
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
+        Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationDialog.setContentText("Are you sure you want to delete this customer?");
+        confirmationDialog.show();
+        // receives the dialog result as a variable. If the user presses OK, the if statement will trigger
+        Optional<ButtonType> result = confirmationDialog.showAndWait();
+        // IllegalStateException: Stage already visible. The OK button does not work
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            customer = new Customer(Integer.parseInt(tfCustomerId.getText()),
+                    tfCustFirstName.getText(),
+                    tfCustLastName.getText(),
+                    tfCustAddress.getText(),
+                    tfCustCity.getText(),
+                    tfCustProv.getText(),
+                    tfCustPostal.getText(),
+                    tfCustCountry.getText(),
+                    tfCustHomePhone.getText(),
+                    tfCustBusPhone.getText(),
+                    tfCustEmail.getText(),
+                    Integer.parseInt(tfAgentId.getText()));
+            CustomerManager.deleteCustomer(customer);
+            //get reference to stage and close it
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            stage.close();
+        }
     }
 
     @FXML
