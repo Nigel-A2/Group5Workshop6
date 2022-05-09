@@ -9,7 +9,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-
+/**
+ * A connection helper class
+ * @author Nate Penner
+ * */
 public class ConnectionManager {
     /**
      * Opens a connection to the database

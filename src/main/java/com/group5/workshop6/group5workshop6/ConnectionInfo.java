@@ -2,6 +2,7 @@ package com.group5.workshop6.group5workshop6;
 
 /**
  * Stores connection information
+ * @author Nate Penner
  * */
 class ConnectionInfo {
     private final String protocol, host, port, database, username, password;
